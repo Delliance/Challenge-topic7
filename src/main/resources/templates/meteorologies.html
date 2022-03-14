@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Meteorology info</title>
+</head>
+<body>
+
+
+	<div th:insert="~{header :: page-header}"></div>
+
+	<h1>New Meteo info</h1>
+
+	<div>
+		<form method="POST" action="/meteorology/add" th:object="${addMeteorologyForm}">
+			<table>
+				<tr>
+					<td><label>date</label></td>
+					<td><input th:field="*{date}" /></td>
+				</tr>
+				<tr>
+					<td><label>location</label></td>
+					<td><input th:field="*{location}" /></td>
+				</tr>
+				<tr>
+					<td><label>temperature</label></td>
+					<td><input th:field="*{temperature}" /></td>
+				</tr>
+				<tr>
+					<td><input type="submit" value="Submit" /></td>
+				</tr>
+			</table>
+		</form>
+	</div>
+	<div>
+		<table>
+			<tr>
+				<th>date</th>
+				<th>location</th>
+				<th>temperature</th>
+			</tr>
+			<tr th:each="meteorology : ${meteorologies}">
+				<td th:text="${meterology.date}" />
+				<td th:text="${mteorology.location}"/>
+				<td th:text="${mteorology.temperature}"/>
+			</tr>
+		</table>
+	</div>
+
+	<div th:insert="~{footer :: copy}"></div>
+
+</body>
+</html>
